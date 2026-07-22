@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bhaiya! 🥳</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <!-- Background Stars & Effects -->
+    <div class="stars-container"></div>
+    <canvas id="fx-canvas"></canvas>
+    <div id="balloon-container"></div>
+
+    <!-- Music Control Element -->
+    <audio id="bg-music" loop src="birthday.mp3"></audio>
+    <button id="music-btn" class="music-toggle-btn">🎵 Play Music</button>
+
+    <!-- PAGE 1: Welcome -->
+    <div id="page-1" class="page active">
+        <div class="card-box">
+            <h1 class="glow-text">Hey Bhaiya! 👀</h1>
+            <p>Aapke liye ek chota sa surprise tayyar kiya hai...</p>
+            <button class="action-btn animate-pop" onclick="startSurpriseWithMusic()">Open Surprise ✨</button>
+        </div>
+    </div>
+
+    <!-- PAGE 2: Question 1 -->
+    <div id="page-2" class="page">
+        <div class="card-box">
+            <h2>Pehle ek baat batayein... 🤔</h2>
+            <p>Kya aapko lagta hai aap duniya ke sabse ache bhai hain?</p>
+            <div class="btn-group">
+                <button class="action-btn" onclick="nextPage(3)">Bilkul! 😎</button>
+                <button class="action-btn btn-secondary" onclick="nextPage(3)">Nahi, bas theek hoon 😜</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: Question 2 -->
+    <div id="page-3" class="page">
+        <div class="card-box">
+            <h2>Wese... Aaj kya din hai? 📅</h2>
+            <p>Aapko yaad bhi hai ya bhool gaye?</p>
+            <div class="btn-group">
+                <button class="action-btn" onclick="nextPage(4)">Mera Birthday! 🎂</button>
+                <button class="action-btn btn-secondary" onclick="nextPage(4)">Ek aam sa din 🤫</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: Irritate Section -->
+    <div id="page-4" class="page">
+        <div class="card-box">
+            <h2 id="q4-title">Acha suniye, waise surprise cancel ho gaya hai! 🤭</h2>
+            <div id="q4-btns" class="btn-group">
+                <button class="action-btn btn-danger" onclick="revealIrritate()">Kyun?? 😲</button>
+            </div>
+            <div id="q4-reveal" class="hide">
+                <p class="prank-text">Mazaak kar rahi thi! Bhala aapka birthday surprise kese cancel ho sakta hai! 😂</p>
+                <button class="action-btn" onclick="startCountdown()">Chalein, Let's Go! 🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 5: Countdown -->
+    <div id="page-5" class="page">
+        <div class="card-box transparent-box">
+            <h2 class="countdown-title">Surprise Loading... ⏳</h2>
+            <div id="countdown-number" class="countdown-display">3️⃣</div>
+        </div>
+    </div>
+
+    <!-- PAGE 6: Celebration Main Visual -->
+    <div id="page-6" class="page">
+        <div class="card-box grand-box">
+            <h1 class="neon-text-red">🎉 HAPPY BIRTHDAY BHAIYA! 🎉</h1>
+            <div class="gift-box-animation">🎁</div>
+            <p class="sub-wish">Aapke liye ek dil se likha hua message hai.</p>
+            <button class="action-btn animate-pulse" onclick="nextPage(7)">Read My Letter ✉️</button>
+        </div>
+    </div>
+
+    <!-- PAGE 7: The Letter Page (Urdu Message) -->
+    <div id="page-7" class="page">
+        <div class="card-box letter-box">
+            <h2>📜 A Special Note For You</h2>
+            <div id="typing-text" class="typed-message-area"></div>
+            <button id="letter-continue-btn" class="action-btn hide" onclick="startSlideshowPage()">See Memories 📸</button>
+        </div>
+    </div>
+
+    <!-- PAGE 8: Photo Slideshow -->
+    <div id="page-8" class="page">
+        <div class="card-box gallery-box">
+            <h2>📸 Sweet Memories</h2>
+            <div class="slideshow-container">
+                <img id="slideshow-img" src="photo1.jpg" alt="Memory">
+                <div class="nav-arrows">
+                    <button class="arrow-btn" onclick="changePicture(-1)">❮</button>
+                    <button class="arrow-btn" onclick="changePicture(1)">❯</button>
+                </div>
+            </div>
+            <button class="action-btn" onclick="goToCakePage()">Next: Cake Cutting! 🎂</button>
+        </div>
+    </div>
+
+    <!-- PAGE 9: Cake Cutting -->
+    <div id="page-9" class="page">
+        <div class="card-box cake-box">
+            <h2>🎂 Make a Wish & Blow the Candle!</h2>
+            <div class="cake-wrapper">
+                <div class="cake-body"></div>
+                <div id="cake-candle" class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            <button id="blow-btn" class="action-btn blow-action" onclick="blowCandle()">🕯 Blow Candle</button>
+        </div>
+    </div>
+
+    <!-- FINAL PAGE: Ending Summary -->
+    <div id="final-page" class="page">
+        <div class="card-box final-box">
+            <h1 class="glow-text">Have a Blast Day! 👑</h1>
+            <p>Allah aapko hamesha khush rakhe aur aapki har dua poori kare. Ameen! 🤲💖</p>
+            <div class="heart-emoji-badge">💝✨</div>
+            <button class="action-btn btn-secondary" onclick="restartSurprise()">Play Again 🔄</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
